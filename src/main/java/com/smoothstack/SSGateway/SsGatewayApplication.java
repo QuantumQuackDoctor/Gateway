@@ -17,11 +17,11 @@ public class SsGatewayApplication {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(r -> r.path("/accounts/**", "/accounts")
-                        .uri("http://user")) //user service link
+                        .uri("http://user:8080")) //user service link
                 .route(r -> r.path("/order/**", "/order" )
-                        .uri("http://order")) //order service link
+                        .uri("http://order:8080")) //order service link
                 .route(r -> r.path("/restaurant/**", "/restaurant" )
-                        .uri("http://restaurant")) //restaurant service link
+                        .uri("http://restaurant:8080")) //restaurant service link
                 .build();
     }
 }
