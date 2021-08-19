@@ -45,7 +45,7 @@ pipeline {
         stage('docker') {
             steps{
                 script {
-                    sh 'cp -r /var/lib/jenkins/workspace/gateway-job/users-api/target .'
+                    sh 'cp -r /var/lib/jenkins/workspace/gateway-job/target .'
                     sh 'docker build . -t quangmtran36/qqd-gateway:$Docker_tag'
                     withCredentials([string(credentialsId: '6b6d3ec6-97dc-4c1c-bf02-67afd00371dc', variable: 'dockerHubPwd')]) {
                         sh 'docker login -u quangmtran36 -p ${dockerHubPwd}'
