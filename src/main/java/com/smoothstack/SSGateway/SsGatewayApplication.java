@@ -16,8 +16,12 @@ public class SsGatewayApplication {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(r -> r.path("/user", "/users", "/login", "/register")
-                        .uri("http://localhost:8080"))
+                .route(r -> r.path("/accounts/**", "/accounts")
+                        .uri("http://user:8080")) //user service link
+                .route(r -> r.path("/order/**", "/order" )
+                        .uri("http://order:8080")) //order service link
+                .route(r -> r.path("/restaurants/**", "/restaurants" )
+                        .uri("http://restaurant:8080")) //restaurant service link
                 .build();
     }
 }
